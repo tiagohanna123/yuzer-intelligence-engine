@@ -5,6 +5,26 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/),
 e este projeto adere ao [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.1] — 2026-05-05
+
+### Adicionado
+
+- **`vitest.config.ts`** — configuração oficial com thresholds 100% de cobertura (exclui barrel files e formatters)
+- **`Dockerfile`** — multi-stage build (node:22-alpine, < 10MB final)
+- **Repositório público** — 13 topics no GitHub (analytics, typescript, cagr, pareto, forecast, seasonality, etc.)
+- **CI verde confirmada** — 6 runs, todas passando
+
+### Corrigido
+
+- `package.json` — `repository.url` e `homepage` apontam para `tiagohanna123` (consistente com GitHub real)
+- `README.md` — badges CI/codecov/npm corrigidos para `tiagohanna123`; typo `|npm test` → `npm test`
+- `CONTRIBUTING.md`, `SUPPORT.md` — URLs corrigidas para `tiagohanna123`
+
+### Melhorado
+
+- **Repositório consistente** — todas as URLs, badges e referências apontam para o mesmo GitHub org
+- **Docker build** — imagem mínima (apenas dist + README + LICENSE) para consumo em containers
+
 ## [0.2.0] — 2026-05-05
 
 ### Adicionado
@@ -60,5 +80,6 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 | ESLint | ❌ não configurado | ✅ 0 erros |
 | TypeScript strict | ✅ 0 erros | ✅ 0 erros |
 
+[0.2.1]: https://github.com/tiagohanna123/yuzer-intelligence-engine/releases/tag/v0.2.1
 [0.2.0]: https://github.com/tiagohanna123/yuzer-intelligence-engine/releases/tag/v0.2.0
 [0.1.0]: https://github.com/tiagohanna123/yuzer-intelligence-engine/releases/tag/v0.1.0

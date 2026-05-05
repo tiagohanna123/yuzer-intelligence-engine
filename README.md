@@ -220,12 +220,15 @@ src/
 | Métrica | Valor |
 |---------|-------|
 | Testes | **91** |
-| Cobertura (branches / statements) | **100% / 100%** |
+| Cobertura (branches / statements / functions / lines) | **100% / 100% / 100% / 100%** |
 | Dependências runtime | **0** |
 | Bundle size (gzip) | **2,7 KB** |
 | TypeScript | **strict mode** |
+| ESLint | **0 erros** |
 | Tree-shakeable | ✅ |
 | Dual ESM/CJS | ✅ |
+| Docker image | ✅ (22-alpine) |
+| CI | ✅ (GitHub Actions, Node 20+22) |
 
 Princípios de qualidade:
 
