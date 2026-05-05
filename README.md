@@ -6,8 +6,8 @@
   <a href="https://www.npmjs.com/package/yuzer-intelligence-engine"><img src="https://img.shields.io/npm/v/yuzer-intelligence-engine" alt="npm"></a>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="License: MIT"></a>
   <a href="./tsconfig.json"><img src="https://img.shields.io/badge/typescript-strict-blue" alt="TypeScript"></a>
-  <img src="https://img.shields.io/badge/bundle-7.98%20KB-brightgreen" alt="Bundle Size">
-  <img src="https://img.shields.io/badge/tests-79%20%7C%20100%25-brightgreen" alt="Tests">
+  <img src="https://img.shields.io/badge/bundle-%3C10KB-brightgreen" alt="Bundle Size">
+  <img src="https://img.shields.io/badge/tests-91%20%7C%20100%25-brightgreen" alt="Tests">
   <a href="./CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen" alt="PRs Welcome"></a>
 </p>
 
@@ -31,6 +31,26 @@ console.log(result.forecast)      // Previsão 3 meses (regressão linear)
 ```bash
 npm install yuzer-intelligence-engine
 ```
+
+---
+
+## Features
+
+11 métricas individuais, tree-shakeable, zero dependências:
+
+| Função | Métrica |
+|--------|---------|
+| `calcMom` | Mês a mês + MA3 |
+| `calcCAGR` | CAGR |
+| `calcCorrelation` | Pearson R |
+| `calcPareto` | Análise de Pareto |
+| `calcQuarters` | Trimestres |
+| `calcForecast` | Regressão linear |
+| `calcSeasonality` | Sazonalidade |
+| `calcProductGrowth` | Produtos em alta |
+| `calcTicketGrowth` | Evolução do ticket |
+| `analyzeCategories` | Categorias |
+| `analyzeEvents` | Eventos normalizados |
 
 ---
 
@@ -153,7 +173,7 @@ import type { Mensal, Evento, ProdutoMix, Categoria, AnalysisResult } from 'yuze
 git clone https://github.com/tiagohanna/yuzer-intelligence-engine.git
 cd yuzer-intelligence-engine
 npm install
-npm test              # 84 testes
+npm test              # 90 testes
 npm run test:coverage # cobertura (100% statements)
 npm run lint          # ESLint strict
 npm run typecheck     # TypeScript strict
@@ -199,10 +219,10 @@ src/
 
 | Métrica | Valor |
 |---------|-------|
-| Testes | **79** (84 com lint) |
-| Cobertura (statements) | **100%** |
+| Testes | **90** |
+| Cobertura (branches / statements) | **95,71% / 100%** |
 | Dependências runtime | **0** |
-| Bundle size (gzip) | **7,98 KB** |
+| Bundle size (gzip) | **2,7 KB** |
 | TypeScript | **strict mode** |
 | Tree-shakeable | ✅ |
 | Dual ESM/CJS | ✅ |
