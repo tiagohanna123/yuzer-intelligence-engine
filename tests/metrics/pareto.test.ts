@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { calcPareto } from '../../src/metrics/pareto'
-import { sampleProdutoMix, zeroTotalMix } from '../fixtures/sample-data'
+import { sampleProdutoMix } from '../fixtures/sample-data'
 import type { ProdutoMix } from '../../src/types'
 
 describe('calcPareto — Análise de Pareto', () => {

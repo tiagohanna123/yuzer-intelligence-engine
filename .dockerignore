@@ -1,0 +1,34 @@
+# === Directories ===
+node_modules/
+.git/
+coverage/
+.vite/
+.nyc_output/
+
+# === Build artifacts (rebuilt in container) ===
+dist/
+
+# === Environment & secrets ===
+.env
+.env.*
+*.log
+
+# === OS artifacts ===
+.DS_Store
+Thumbs.db
+
+# === IDE ===
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# === Documentation (keep LICENSE/README for npm) ===
+AGENTS.md
+ARCHITECTURE.md
+CONTRIBUTING.md
+ROADMAP.md
+LEARN.md
+CHANGELOG.md
+docs/
