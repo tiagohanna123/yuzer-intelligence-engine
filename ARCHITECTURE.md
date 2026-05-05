@@ -1,6 +1,6 @@
 # Arquitetura — Yuzer Intelligence Engine
 
-> **Versão:** 0.1.0 · **Licença:** MIT · **Autor:** Tiago Hanna
+> **Versão:** 0.2.1 · **Licença:** MIT · **Autor:** Tiago Hanna
 
 ---
 
