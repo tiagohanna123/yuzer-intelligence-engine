@@ -58,26 +58,6 @@
 - TypeScript strict mode — 0 errors
 - CI: GitHub Actions (test + typecheck + build)
 
----
-
-## v0.2.0 — Observability & Robustness *(Estimated: 1 week)*
-
-### Features
-- **Edge case hardening** — NaN/Infinity guards, empty array handling
-- **Error types** — Typed error classes for invalid input
-- **Input validation** — Zod schemas for all public API inputs
-- **100% branch coverage** — All conditional branches tested
-- **eslint** — Static analysis with strict TS rules
-- **Benchmark suite** — Performance baseline for core metrics
-
-### Quality Target
-- 90% branch coverage
-- 95% function coverage
-- eslint strict — 0 warnings
-- Benchmark regression gate in CI
-
----
-
 ## v0.3.0 — Extensibility *(Estimated: 2 weeks)*
 
 ### Features
