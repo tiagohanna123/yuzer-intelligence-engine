@@ -1,8 +1,9 @@
 {
   "name": "yuzer-intelligence-engine",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Motor de an\u00e1lise para dados de bar Yuzer \u2014 CAGR, correla\u00e7\u00f5es, Pareto, sazonalidade, previs\u00e3o por regress\u00e3o linear, produtos em alta. Zero depend\u00eancias runtime.",
   "type": "module",
+  "sideEffects": false,
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",

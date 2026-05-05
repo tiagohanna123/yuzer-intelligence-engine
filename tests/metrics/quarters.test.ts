@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { calcQuarters } from '../../src/metrics/quarters'
 import type { QuarterEntry, Mensal } from '../../src/types'
 import { MESES } from '../../src/constants'
-import { sampleMensais, emptyMensais, twoMensais } from '../fixtures/sample-data'
+import { sampleMensais, emptyMensais, twoMensais, badLabelMensal } from '../fixtures/sample-data'
 
 describe('calcQuarters — Agregação por Trimestre', () => {
   it('deve retornar array vazio para dados vazios', () => {
@@ -51,5 +51,16 @@ describe('calcQuarters — Agregação por Trimestre', () => {
     const result = calcQuarters(semAno, MESES)
     expect(result).toHaveLength(1)
     expect(result[0].label).toBe('Q1 2000')
+  })
+
+  it('deve pular labels que nao estao em monthNames (idx < 0 continue)', () => {
+    // badLabelMensal: Janeiro/2024 (idx=-1), Fev/2024 (idx=1), INVALIDO/2024 (idx=-1)
+    // Apenas Fev/2024 deve ser processado → Q1 2024
+    const result = calcQuarters(badLabelMensal, MESES)
+    expect(result).toHaveLength(1)
+    expect(result[0].label).toBe('Q1 2024')
+    expect(result[0].revenue).toBe(6000)
+    expect(result[0].orders).toBe(60)
+    expect(result[0].count).toBe(1)
   })
 })

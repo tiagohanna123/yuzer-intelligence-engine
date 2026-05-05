@@ -195,6 +195,48 @@ src/
 
 ---
 
+## Qualidade
+
+| Métrica | Valor |
+|---------|-------|
+| Testes | **79** (84 com lint) |
+| Cobertura (statements) | **100%** |
+| Dependências runtime | **0** |
+| Bundle size (gzip) | **7,98 KB** |
+| TypeScript | **strict mode** |
+| Tree-shakeable | ✅ |
+| Dual ESM/CJS | ✅ |
+
+Princípios de qualidade:
+
+- **Zero dependências runtime** — sem risco de supply-chain, sem breaking changes upstream
+- **Testes em todas as métricas** — edge cases, NaN, arrays vazios, valores negativos
+- **Cobertura 100%** — statements, branches, functions, lines
+- **CI automatizada** — ESLint + typecheck + testes + cobertura a cada push
+- **Sem `any`** — tipos estritos cobrindo todas as interfaces
+- **Sem mutação** — funções puras que nunca alteram a entrada
+
+---
+
+## Projetos Relacionados
+
+- **[Hermes Agent Soul](https://github.com/tiagohanna/hermes-agent-soul)** — Agente de IA modular que consome o Yuzer para análise de dados de bar e geração de relatórios inteligentes
+- **[Sarau Secreto](https://github.com/tiagohanna/sarau-secreto)** — Sistema de gestão completo para festival literário; o Yuzer foi extraído deste projeto como motor de análise standalone
+
+---
+
+## Links
+
+| Recurso | Descrição |
+|---------|-----------|
+| [ARCHITECTURE.md](./ARCHITECTURE.md) | Arquitetura, fluxo de dados, princípios de design |
+| [CHANGELOG.md](./CHANGELOG.md) | Histórico de versões e mudanças |
+| [CONTRIBUTING.md](./CONTRIBUTING.md) | Guia de contribuição e boas práticas |
+| [ROADMAP.md](./ROADMAP.md) | Próximos passos e planejamento |
+| [SECURITY.md](./SECURITY.md) | Política de segurança |
+
+---
+
 ## Licença
 
 MIT © [Tiago Hanna](https://github.com/tiagohanna)

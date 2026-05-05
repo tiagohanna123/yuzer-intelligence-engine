@@ -43,9 +43,10 @@ describe('calcPareto — Análise de Pareto', () => {
     expect(result.topPct).toBe(0)
   })
 
-  it('deve retornar topN=0 e topPct=0 para zeroTotalMix com threshold 0.8', () => {
-    const result = calcPareto(zeroTotalMix, 0.8)
-    expect(result.topN).toBe(3)
-    expect(result.topPct).toBe(0)
+  it('deve cair no fallback total > 0 quando loop termina sem atingir threshold', () => {
+    // threshold > 1.0 (impossível de atingir) → loop completa, cai no return final
+    const result = calcPareto(sampleProdutoMix, 1.5)
+    expect(result.topN).toBe(sampleProdutoMix.length)
+    expect(result.topPct).toBeCloseTo(100, 0)
   })
 })

@@ -12,9 +12,8 @@ export function calcSeasonality(
   for (const m of mensais) {
     const idx = monthNames.indexOf(m.label.split('/')[0]) + 1
     if (idx < 1 || idx > 12) continue
-    byMonth[idx] ??= { r: 0, c: 0 }
-    byMonth[idx].r += m.revenue
-    byMonth[idx].c++
+    const prev = byMonth[idx] ?? { r: 0, c: 0 }
+    byMonth[idx] = { r: prev.r + m.revenue, c: prev.c + 1 }
   }
 
   return Object.entries(byMonth)

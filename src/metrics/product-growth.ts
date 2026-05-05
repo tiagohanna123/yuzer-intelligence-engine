@@ -25,7 +25,9 @@ export function calcProductGrowth(eventos: Evento[]): ProdGrowth[] {
     }
   }
 
-  return Object.keys(ps)
+  const allProducts = new Set([...Object.keys(pf), ...Object.keys(ps)])
+
+  return Array.from(allProducts)
     .map(n => ({
       name: n,
       f: pf[n] || 0,
