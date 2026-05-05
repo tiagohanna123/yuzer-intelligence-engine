@@ -64,4 +64,21 @@ describe('calcForecast — Regressão Linear', () => {
       expect(entry.previsto).toBeCloseTo(5000, 0)
     }
   })
+
+  it('deve retornar slope 0 com 12+ meses de revenue idêntico', () => {
+    const constantes: Mensal[] = Array.from({ length: 14 }, (_, i) => ({
+      mes: `2025-${String(i + 1).padStart(2, '0')}`,
+      label: `${['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez','Jan','Fev'][i]}/2025`,
+      eventos: 1,
+      orders: 100,
+      revenue: 5000,
+      ticketMedio: 50,
+    }))
+    const result = calcForecast(constantes)
+    expect(result).toHaveLength(3)
+    // Todas as previsões = 5000 (slope 0 porque sn = 0)
+    for (const entry of result) {
+      expect(entry.previsto).toBeCloseTo(5000, 0)
+    }
+  })
 })

@@ -1,14 +1,32 @@
 # Yuzer Intelligence Engine
 
-![CI](https://github.com/tiagohanna/yuzer-intelligence-engine/actions/workflows/ci.yml/badge.svg)
-![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)
-![License](https://img.shields.io/badge/license-MIT-blue)
-![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen)
-![TypeScript](https://img.shields.io/badge/typescript-strict-3178c6)
+<p align="center">
+  <a href="https://github.com/tiagohanna123/yuzer-intelligence-engine/actions/workflows/ci.yml"><img src="https://github.com/tiagohanna123/yuzer-intelligence-engine/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://codecov.io/gh/tiagohanna123/yuzer-intelligence-engine"><img src="https://codecov.io/gh/tiagohanna123/yuzer-intelligence-engine/branch/main/graph/badge.svg" alt="codecov"></a>
+  <a href="https://www.npmjs.com/package/yuzer-intelligence-engine"><img src="https://img.shields.io/npm/v/yuzer-intelligence-engine" alt="npm"></a>
+  <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="License: MIT"></a>
+  <a href="./tsconfig.json"><img src="https://img.shields.io/badge/typescript-strict-blue" alt="TypeScript"></a>
+  <img src="https://img.shields.io/badge/bundle-7.98%20KB-brightgreen" alt="Bundle Size">
+  <img src="https://img.shields.io/badge/tests-79%20%7C%20100%25-brightgreen" alt="Tests">
+  <a href="./CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen" alt="PRs Welcome"></a>
+</p>
 
 Motor de análise para dados de bar e eventos — **CAGR**, **correlação de Pearson**, **Pareto**, **sazonalidade**, **previsão por regressão linear**, **produtos em alta**. Zero dependências runtime. 100% TypeScript strict.
 
 Extraído do sistema Sarau Secreto para uso standalone em qualquer dashboard, API ou relatório.
+
+## Quickstart
+
+```typescript
+import { analyze } from 'yuzer-intelligence-engine'
+
+const result = analyze(mensais, eventos, produtoMix, categorias)
+
+console.log(result.cagr)          // CAGR (% ao ano)
+console.log(result.correlation)   // Correlação de Pearson (Pearson R)
+console.log(result.topN)          // Produtos Pareto 80/20
+console.log(result.forecast)      // Previsão 3 meses (regressão linear)
+```
 
 ```bash
 npm install yuzer-intelligence-engine

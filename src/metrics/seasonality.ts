@@ -20,6 +20,6 @@ export function calcSeasonality(
   return Object.entries(byMonth)
     .map(([k, d]) => ({
       mes: monthNames[parseInt(k) - 1],
-      media: d.r / d.c,
+      media: (d as { r: number; c: number }).r / (d as { r: number; c: number }).c,
     }))
 }

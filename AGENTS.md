@@ -1,160 +1,149 @@
 # AGENTS.md — Yuzer Intelligence Engine
 
-> Context for AI agents and LLM-assisted development.
+> Contexto para agentes de IA (Hermes Agent, Claude Code, etc.)
 
----
+## Visão Geral
 
-## TL;DR
+**Yuzer Intelligence Engine** é um motor de análise financeira para dados de bar e eventos — CAGR, correlação de Pearson, Pareto, sazonalidade, previsão por regressão linear, produtos em alta. Zero dependências runtime. 100% TypeScript strict.
 
-```
-yuzer-intelligence-engine  —  Motor de análise financeira para dados de bar/eventos
-Zero dependências runtime   —  Funções puras, tree-shakeable, 100% TypeScript strict
-```
+- **Repositório:** https://github.com/tiagohanna/yuzer-intelligence-engine
+- **Licença:** MIT
+- **Autor:** Tiago Hanna
+- **Node:** >=20
+- **Pacote npm:** `yuzer-intelligence-engine`
 
-- Criado por: **Tiago Hanna**
-- Licença: **MIT**
-- Repositório: `github.com/tiagohanna/yuzer-intelligence-engine`
-- Pacote npm: `yuzer-intelligence-engine`
+## Stack
 
----
-
-## Tech Stack
-
-| Camada      | Tecnologia                          |
-|-------------|-------------------------------------|
-| Linguagem   | TypeScript 5.7 (strict mode)        |
-| Testes      | Vitest 4.x                          |
-| Build       | tsup (ESM + CJS + DTS + sourcemaps) |
-| Linter      | ESLint 9.x + typescript-eslint      |
-| Runtime     | Node >= 20                          |
-| Dependências| **Zero** (devDeps only)             |
-
----
-
-## Key Files
-
-```
-├── src/
-│   ├── index.ts              → Barrel exports públicos
-│   ├── types.ts              → Interfaces Mensal, Evento, ProdutoMix, Categoria, AnalysisResult
-│   ├── constants.ts          → GOLD, PURPLE, MESES, THRESHOLDS
-│   ├── formatters.ts         → fmt(), fmtNum(), pct(), pctAbs(), round()
-│   ├── engine.ts             → analyze() — orquestrador de todas as métricas
-│   └── metrics/
-│       ├── mom.ts            → Mês a mês + média móvel 3m
-│       ├── cagr.ts           → Compound Annual Growth Rate
-│       ├── correlation.ts    → Correlação de Pearson (receita × pedidos)
-│       ├── pareto.ts         → Análise de Pareto 80/20
-│       ├── quarters.ts       → Agregação trimestral
-│       ├── forecast.ts       → Regressão linear simples
-│       ├── seasonality.ts    → Sazonalidade (receita média por mês)
-│       ├── product-growth.ts → Top 10 produtos em alta
-│       ├── ticket-growth.ts  → Evolução do ticket médio
-│       ├── categories.ts     → Análise de categorias
-│       └── events.ts         → Eventos normalizados (receita/dia)
-├── tests/
-│   ├── engine.test.ts        → 23 testes do orquestrador
-│   ├── metrics/              → 11 arquivos · 57 testes unitários
-│   └── fixtures/
-│       └── sample-data.ts    → Dados de teste reais
-├── AGENTS.md                 → ✓ (este arquivo)
-├── ARCHITECTURE.md           → Documentação completa de arquitetura
-├── CHANGELOG.md              → Histórico de versões
-├── CONTRIBUTING.md           → Guia de contribuição
-├── LEARN.md                  → Guia de aprendizado
-├── README.md                 → Documentação principal
-├── ROADMAP.md                → Roadmap do projeto
-├── package.json
-├── tsconfig.json
-├── vitest.config.ts
-└── eslint.config.js
-```
-
----
+| Camada | Tecnologia |
+|--------|-----------|
+| Runtime | Node.js >=20 (ESM only) |
+| Linguagem | TypeScript ~5.7 (strict mode) |
+| Build | tsup (esm + cjs + dts + sourcemap) |
+| Testes | Vitest v4 |
+| Lint | ESLint v9 (flat config) + typescript-eslint (strict + stylistic) |
+| CI | GitHub Actions (Node 20, 22) |
 
 ## Commands
 
 ```bash
-npm test              # vitest run          — 80 testes
-npm run test:watch   # vitest               — modo watch
-npm run test:coverage # vitest --coverage    — com cobertura
-npm run typecheck    # tsc --noEmit         — 0 erros
-npm run build        # tsup                — ESM + CJS + DTS
-npm run lint         # eslint src/ tests/  — linting
-npm run dev          # tsup --watch        — build contínuo
+npm install          # Instalar dependências
+npm run dev          # Build em watch mode
+npm test             # Rodar testes unitários (vitest)
+npm run test:coverage  # Testes com cobertura
+npm run lint         # ESLint em src/
+npm run lint:fix     # ESLint com auto-fix
+npm run typecheck    # tsc --noEmit (verificação de tipos)
+npm run build        # Build de produção (tsup)
 ```
 
----
+Pré-commit (CI roda automaticamente): `npm run lint && npm run build && npm test`
 
-## Architecture Overview
-
-### Fluxo de Dados
+## Estrutura de Diretórios
 
 ```
-Mensais ──┐
-Eventos ──┤
-MixProds ─┼──→ engine.analyze() ──→ AnalysisResult (20 métricas)
-Categorias┘
+├── src/
+│   ├── index.ts              # Ponto de entrada público (barrel exports)
+│   ├── types.ts              # Interfaces de entrada/saída
+│   ├── constants.ts          # Paleta de cores, meses PT-BR, limiares
+│   ├── formatters.ts         # Formatadores BRL, %, número
+│   ├── engine.ts             # Orquestrador — chama todas as métricas
+│   └── metrics/              # Métricas individuais (tree-shakeable)
+│       ├── mom.ts            #   Mês a mês + média móvel 3 meses
+│       ├── cagr.ts           #   Compound Annual Growth Rate
+│       ├── correlation.ts    #   Correlação de Pearson (receita × pedidos)
+│       ├── pareto.ts         #   Análise de Pareto 80/20
+│       ├── quarters.ts       #   Agregação trimestral
+│       ├── forecast.ts       #   Regressão linear simples
+│       ├── seasonality.ts    #   Sazonalidade (receita média por mês)
+│       ├── product-growth.ts #   Top 10 produtos em alta
+│       ├── ticket-growth.ts  #   Evolução do ticket médio
+│       ├── categories.ts     #   Análise de categorias
+│       └── events.ts         #   Eventos normalizados (receita/dia)
+├── tests/
+│   ├── engine.test.ts        # Testes integrados do orquestrador
+│   ├── fixtures/             # Dados de teste compartilhados
+│   └── metrics/              # Testes unitários por métrica
+├── dist/                     # Build output (gitignored)
+├── coverage/                 # Relatório de cobertura (gitignored)
+├── .editorconfig
+├── eslint.config.js          # ESLint flat config
+├── tsconfig.json
+├── vitest.config.ts
+├── package.json
+├── AGENTS.md                 # Este arquivo
+├── ARCHITECTURE.md           # Documentação detalhada da arquitetura
+├── CONTRIBUTING.md           # Guia de contribuição
+├── README.md                 # Documentação principal
+├── CHANGELOG.md
+├── ROADMAP.md
+└── LEARN.md
 ```
 
-- **engine.ts** = orquestrador: chama cada métrica individualmente, monta o resultado final.
-- Cada métrica em `src/metrics/` é uma **função pura** autocontida.
-- Nenhuma métrica importa outra métrica — dependem apenas de `types.ts`.
+## Arquitetura
 
-### Princípios
+### Pipeline de Execução
 
-1. **Zero dependências runtime** — sem `import` de terceiros no código produzido
-2. **Funções puras** — sem side effects, sem mutação de argumentos
-3. **TypeScript strict** — sem `any`, sem `// @ts-ignore`
-4. **Tree-shakeable** — cada métrica importável separadamente
-5. **ESM + CJS + DTS** — suporte a todos os ambientes
+A função `analyze()` recebe 4 parâmetros (mensais, eventos, produtoMix, categorias) + options opcional e retorna `AnalysisResult` com 20 métricas.
 
----
+O orquestrador (`engine.ts`) chama cada métrica individualmente e monta o resultado. Cada métrica é uma função pura, sem side effects, importável separadamente (tree-shaking).
 
-## Test Matrix
+### Princípios de Design
 
-| Suite             | Arquivos | Testes | Status |
-|-------------------|----------|--------|--------|
-| engine (integr.)  | 1        | 23     | ✅     |
-| metrics (unit.)   | 11       | 57     | ✅     |
-| **Total**         | **12**   | **80** | ✅     |
+1. **Zero dependências runtime** — apenas stdlib do Node.js
+2. **Funções puras** — sem side effects, sem mutação de entrada
+3. **100% tipado** — sem `any`, sem type assertions desnecessárias
+4. **Tree-shakeable** — cada métrica pode ser importada individualmente
+5. **Testes com cobertura mínima**: 95% statements, 90% branches, 95% functions
 
----
+### Entrada
 
-## Quality Gates
+| Parâmetro | Tipo | Descrição |
+|-----------|------|-----------|
+| `mensais` | `Mensal[]` | 18+ meses de dados agregados |
+| `eventos` | `Evento[]` | Eventos individuais com produtos |
+| `produtoMix` | `ProdutoMix[]` | Mix de produtos com receita |
+| `categorias` | `Categoria[]` | Categorias de produtos |
+| `options` | `AnalyzeOptions` | (opcional) Configurações |
 
-Verificação obrigatória antes de qualquer commit/PR:
+### Saída (20 métricas)
 
-| Gate              | Comando                | Requisito          |
-|-------------------|------------------------|--------------------|
-| TypeScript strict | `npm run typecheck`    | 0 erros           |
-| Build             | `npm run build`        | Saída limpa       |
-| Testes            | `npm test`             | 100% passando     |
-| Cobertura         | `npm run test:coverage`| stmts ≥ 100%, branches ≥ 85%, funcs ≥ 100%, lines ≥ 100% |
-| Lint              | `npm run lint`         | Sem warnings      |
+`AnalysisResult` inclui: mom, quarters, cagr, correlation, top3CatPct, topN, topPct, prodGrowth, forecast, seasonal, scatterData, bestNorm, worstNorm, bestMonth, worstMonth, tg, tt, to, sortedCats, sortedProds.
 
----
+## ESLint Config
 
-## Conventions
+Arquivo: `eslint.config.js` (flat config)
 
-- **Nomes de arquivo**: kebak-case (`product-growth.ts`, `ticket-growth.ts`)
-- **Nomes de função**: camelCase com prefixo `calc` para métricas (`calcCAGR`, `calcPareto`)
-- **Imports de tipo**: usar `import type { ... }` / `export type { ... }` (verbatimModuleSyntax)
-- **Testes**: `describe`/`it` por módulo, fixtures centralizadas em `tests/fixtures/`
-- **Edge cases**: toda função trata arrays vazios, 1 elemento, divisão por zero
-- **Commits**: incremental, cobertura de edge cases, CHANGELOG atualizado
+- Base: `@eslint/js` recommended
+- TypeScript: `typescript-eslint` strict-type-checked + stylistic-type-checked
+- `projectService: true` para type-checking
+- Regras personalizadas:
+  - `no-unnecessary-condition`: desligado (padrões comuns de Record<K,V>)
+  - `no-unused-vars`: error (com `^_` ignore pattern)
+  - `restrict-template-expressions`: error (allowNumber, allowBoolean, allowNullish)
+  - `no-confusing-void-expression`: desligado
+  - `prefer-nullish-coalescing`: error
+  - `prefer-optional-chain`: error
+- Ignora: `dist/`, `coverage/`, `node_modules/`, `*.config.*`
 
----
+## TypeScript Config
 
-## Agent Instructions
+- `strict: true`, `target: ES2022`, `module: ESNext`
+- `moduleResolution: bundler`
+- `noUnusedLocals`, `noUnusedParameters`, `noFallthroughCasesInSwitch`
+- `verbatimModuleSyntax: true`
+- Include apenas `src/` (testes têm tsconfig próprio ou rodam via vitest)
 
-Ao trabalhar neste repositório:
+## CI/CD (GitHub Actions)
 
-1. **Leia `ARCHITECTURE.md`** primeiro para entender o fluxo de dados completo.
-2. **Não adicione dependências runtime** — se precisar de algo externo, implemente manualmente.
-3. **Mantenha funções puras** — sem mutação de inputs, sem side effects.
-4. **Cubra edge cases** nos testes: vazio, 1 item, divisão por zero, valores negativos.
-5. **Respeite os thresholds de cobertura** — não desative ou reduza.
-6. **Mantenha tree-shakeability** — cada métrica deve ser importável sem arrastar outras.
-7. **Atualize `CHANGELOG.md`** sob `[Unreleased]` ao adicionar/modificar funcionalidades.
-8. **Execute o quality gate completo** antes de finalizar qualquer alteração.
+4 jobs em pipeline:
+1. **test** — `npm test` + `tsc --noEmit` (Node 20 e 22)
+2. **coverage** — `npm run test:coverage` → Codecov
+3. **build** — `npm run build` → upload dist como artifact
+4. **release** — apenas em tags `v*` → gera changelog + GitHub Release
+
+## Convenções
+
+- **Commits:** [Conventional Commits](https://www.conventionalcommits.org/) (`feat:`, `fix:`, `chore:`, `docs:`, etc.)
+- **Branches:** `feat/nova-metrica`, `fix/cagr-edge-case`
+- **Linguagem:** Código e commits em inglês; documentação principal em português
+- **NPM:** Publicado como pacote público no npm registry

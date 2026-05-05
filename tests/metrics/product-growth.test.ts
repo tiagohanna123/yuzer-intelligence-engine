@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { calcProductGrowth } from '../../src/metrics/product-growth'
 import type { ProdGrowth, Evento } from '../../src/types'
-import { sampleEventos } from '../fixtures/sample-data'
+import { sampleEventos, singleProductEvent } from '../fixtures/sample-data'
 
 describe('calcProductGrowth — Produtos em Alta', () => {
   it('deve retornar array vazio para menos de 2 eventos', () => {
@@ -90,5 +90,53 @@ describe('calcProductGrowth — Produtos em Alta', () => {
     expect(drink!.f).toBe(0)
     expect(drink!.s).toBe(200)
     expect(drink!.g).toBe(100)
+  })
+
+  it('deve lidar com produto que aparece apenas na 2ª metade com total zero (pf=0, ps=0)', () => {
+    const eventos: Evento[] = [
+      {
+        start: '2024-01-01', end: '2024-01-01', days: 1,
+        orders: 10, revenue: 1000, ticketMedio: 100, itensVendidos: 5,
+        produtos: [{ name: 'VINHO', qty: 1, total: 100, pct: 100 }],
+        metodosPagamento: [{ method: 'Crédito', total: 1000, pct: 100 }],
+      },
+      {
+        start: '2024-02-01', end: '2024-02-01', days: 1,
+        orders: 10, revenue: 1000, ticketMedio: 100, itensVendidos: 5,
+        produtos: [{ name: 'DRINK', qty: 0, total: 0, pct: 0 }],
+        metodosPagamento: [{ method: 'Crédito', total: 1000, pct: 100 }],
+      },
+    ]
+    const result = calcProductGrowth(eventos)
+    // DRINK aparece na 2ª metade mas com total=0 → f=0, s=0, g=0
+    const drink = result.find(p => p.name === 'DRINK')
+    expect(drink).toBeDefined()
+    expect(drink!.f).toBe(0)
+    expect(drink!.s).toBe(0)
+    expect(drink!.g).toBe(0)
+  })
+
+  it('deve lidar com produto que aparece apenas na 1ª metade com zero na 2ª (pf>0, ps=0)', () => {
+    const eventos: Evento[] = [
+      {
+        start: '2024-01-01', end: '2024-01-01', days: 1,
+        orders: 10, revenue: 1000, ticketMedio: 100, itensVendidos: 5,
+        produtos: [{ name: 'VINHO', qty: 1, total: 100, pct: 100 }],
+        metodosPagamento: [{ method: 'Crédito', total: 1000, pct: 100 }],
+      },
+      {
+        start: '2024-02-01', end: '2024-02-01', days: 1,
+        orders: 10, revenue: 1000, ticketMedio: 100, itensVendidos: 5,
+        produtos: [],
+        metodosPagamento: [{ method: 'Crédito', total: 1000, pct: 100 }],
+      },
+    ]
+    const result = calcProductGrowth(eventos)
+    // VINHO aparece só na 1ª metade → f=100, ps[n] undefined → 0, g = -100%
+    const vinho = result.find(p => p.name === 'VINHO')
+    expect(vinho).toBeDefined()
+    expect(vinho!.f).toBe(100)
+    expect(vinho!.s).toBe(0)
+    expect(vinho!.g).toBe(-100)
   })
 })
