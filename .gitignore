@@ -7,3 +7,10 @@ coverage/
 .env.local
 *.log
 .DS_Store
+*.tgz
+*.swp
+*.swo
+.idea/
+.vscode/
+*.orig
+*.bak
