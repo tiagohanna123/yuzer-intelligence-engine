@@ -1,8 +1,8 @@
 # Yuzer Intelligence Engine
 
 <p align="center">
-  <a href="https://github.com/tiagohanna/yuzer-intelligence-engine/actions/workflows/ci.yml"><img src="https://github.com/tiagohanna/yuzer-intelligence-engine/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
-  <a href="https://codecov.io/gh/tiagohanna/yuzer-intelligence-engine"><img src="https://codecov.io/gh/tiagohanna/yuzer-intelligence-engine/branch/main/graph/badge.svg" alt="codecov"></a>
+  <a href="https://github.com/tiagohanna123/yuzer-intelligence-engine/actions/workflows/ci.yml"><img src="https://github.com/tiagohanna123/yuzer-intelligence-engine/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://codecov.io/gh/tiagohanna123/yuzer-intelligence-engine"><img src="https://codecov.io/gh/tiagohanna123/yuzer-intelligence-engine/branch/main/graph/badge.svg" alt="codecov"></a>
   <a href="https://www.npmjs.com/package/yuzer-intelligence-engine"><img src="https://img.shields.io/npm/v/yuzer-intelligence-engine" alt="npm"></a>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="License: MIT"></a>
   <a href="./tsconfig.json"><img src="https://img.shields.io/badge/typescript-strict-blue" alt="TypeScript"></a>
@@ -170,10 +170,10 @@ import type { Mensal, Evento, ProdutoMix, Categoria, AnalysisResult } from 'yuze
 ## Desenvolvimento
 
 ```bash
-git clone https://github.com/tiagohanna/yuzer-intelligence-engine.git
+git clone https://github.com/tiagohanna123/yuzer-intelligence-engine.git
 cd yuzer-intelligence-engine
 npm install
-|npm test              # 91 testes
+npm test              # 91 testes
 npm run test:coverage # cobertura (100% statements)
 npm run lint          # ESLint strict
 npm run typecheck     # TypeScript strict
@@ -240,8 +240,8 @@ Princípios de qualidade:
 
 ## Projetos Relacionados
 
-- **[Hermes Agent Soul](https://github.com/tiagohanna/hermes-agent-soul)** — Agente de IA modular que consome o Yuzer para análise de dados de bar e geração de relatórios inteligentes
-- **[Sarau Secreto](https://github.com/tiagohanna/sarau-secreto)** — Sistema de gestão completo para festival literário; o Yuzer foi extraído deste projeto como motor de análise standalone
+- **[Hermes Agent Soul](https://github.com/tiagohanna123/hermes-agent-soul)** — Agente de IA modular que consome o Yuzer para análise de dados de bar e geração de relatórios inteligentes
+- **[Sarau Secreto](https://github.com/tiagohanna123/sarau-secreto)** — Sistema de gestão completo para festival literário; o Yuzer foi extraído deste projeto como motor de análise standalone
 
 ---
 

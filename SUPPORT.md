@@ -4,8 +4,8 @@
 
 ### GitHub Issues (Recommended)
 
-- **Bug reports**: https://github.com/tiagohanna/yuzer-intelligence-engine/issues
-- **Feature requests**: https://github.com/tiagohanna/yuzer-intelligence-engine/issues
+- **Bug reports**: https://github.com/tiagohanna123/yuzer-intelligence-engine/issues
+- **Feature requests**: https://github.com/tiagohanna123/yuzer-intelligence-engine/issues
 
 Before opening a new issue, please search existing issues to avoid duplicates.
 

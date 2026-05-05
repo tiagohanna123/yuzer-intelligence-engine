@@ -10,8 +10,8 @@ Este projeto adota um código de conduta baseado no [Contributor Covenant](https
 
 ### Reportando Bugs
 
-1. Verifique se o bug já não foi reportado nas [issues](https://github.com/tiagohanna/yuzer-intelligence-engine/issues)
-2. Use o template de [bug report](https://github.com/tiagohanna/yuzer-intelligence-engine/issues/new?template=bug_report.md)
+1. Verifique se o bug já não foi reportado nas [issues](https://github.com/tiagohanna123/yuzer-intelligence-engine/issues)
+2. Use o template de [bug report](https://github.com/tiagohanna123/yuzer-intelligence-engine/issues/new?template=bug_report.md)
 3. Inclua:
    - Versão do Node.js e sistema operacional
    - Código mínimo para reproduzir
@@ -20,7 +20,7 @@ Este projeto adota um código de conduta baseado no [Contributor Covenant](https
 ### Sugerindo Funcionalidades
 
 1. Verifique se a funcionalidade já não foi sugerida
-2. Use o template de [feature request](https://github.com/tiagohanna/yuzer-intelligence-engine/issues/new?template=feature_request.md)
+2. Use o template de [feature request](https://github.com/tiagohanna123/yuzer-intelligence-engine/issues/new?template=feature_request.md)
 3. Explique o caso de uso e o valor da funcionalidade
 
 ### Pull Requests

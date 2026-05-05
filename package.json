@@ -63,12 +63,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tiagohanna/yuzer-intelligence-engine.git"
+    "url": "https://github.com/tiagohanna123/yuzer-intelligence-engine.git"
   },
   "bugs": {
-    "url": "https://github.com/tiagohanna/yuzer-intelligence-engine/issues"
+    "url": "https://github.com/tiagohanna123/yuzer-intelligence-engine/issues"
   },
-  "homepage": "https://github.com/tiagohanna/yuzer-intelligence-engine#readme",
+  "homepage": "https://github.com/tiagohanna123/yuzer-intelligence-engine#readme",
   "engines": {
     "node": ">=20"
   },
