@@ -6,7 +6,7 @@
 
 **Yuzer Intelligence Engine** é um motor de análise financeira para dados de bar e eventos — CAGR, correlação de Pearson, Pareto, sazonalidade, previsão por regressão linear, produtos em alta. Zero dependências runtime. 100% TypeScript strict.
 
-- **Repositório:** https://github.com/tiagohanna/yuzer-intelligence-engine
+- **Repositório:** https://github.com/tiagohanna123/yuzer-intelligence-engine
 - **Licença:** MIT
 - **Autor:** Tiago Hanna
 - **Node:** >=20

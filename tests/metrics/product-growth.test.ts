@@ -116,9 +116,10 @@ describe('calcProductGrowth — Produtos em Alta', () => {
     expect(drink!.g).toBe(0)
   })
 
-  it('deve lidar com produto que aparece apenas na 1ª metade com ps=0 (pf>0, ps=0)', () => {
-    // Produto aparece na 1ª metade (fh) → tem em pf mas não em ps
-    // Como o map itera sobre Object.keys(ps), este produto não aparece no output
+  it('deve lidar com produto que aparece apenas na 1ª metade (pf>0, ps=undefined)', () => {
+    // VINHO aparece no 1º evento (1ª metade), 2º evento não tem VINHO
+    // Com allProducts, VINHO é incluído no resultado
+    // pf['VINHO']=100, ps['VINHO']=undefined → f=100, s=0, g=-100
     const eventos: Evento[] = [
       {
         start: '2024-01-01', end: '2024-01-01', days: 1,
@@ -129,17 +130,17 @@ describe('calcProductGrowth — Produtos em Alta', () => {
       {
         start: '2024-02-01', end: '2024-02-01', days: 1,
         orders: 10, revenue: 1000, ticketMedio: 100, itensVendidos: 5,
-        produtos: [{ name: 'DRINK', qty: 1, total: 50, pct: 100 }],
+        produtos: [],
         metodosPagamento: [{ method: 'Crédito', total: 1000, pct: 100 }],
       },
     ]
     const result = calcProductGrowth(eventos)
-    // VINHO aparece só na 1ª metade, DRINK aparece só na 2ª metade
-    const drink = result.find(p => p.name === 'DRINK')
-    expect(drink).toBeDefined()
-    expect(drink!.f).toBe(0)
-    expect(drink!.s).toBe(50)
-    expect(drink!.g).toBe(100)
+    // VINHO aparece só na 1ª metade, 2ª metade não tem → f=100, s=0, g=-100
+    const vinho = result.find(p => p.name === 'VINHO')
+    expect(vinho).toBeDefined()
+    expect(vinho!.f).toBe(100)
+    expect(vinho!.s).toBe(0)
+    expect(vinho!.g).toBe(-100)
   })
 
   it('deve cobrir todas as branches do ternary aninhado via fixture singleProductEvent', () => {

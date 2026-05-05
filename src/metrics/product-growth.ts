@@ -33,7 +33,7 @@ export function calcProductGrowth(eventos: Evento[]): ProdGrowth[] {
       f: pf[n] || 0,
       s: ps[n] || 0,
       g: (pf[n] || 0) > 0
-        ? ((ps[n] - (pf[n] || 0)) / (pf[n] || 0)) * 100
+        ? (((ps[n] || 0) - (pf[n] || 0)) / (pf[n] || 0)) * 100
         : (ps[n] > 0 ? 100 : 0),
     }))
     .sort((a, b) => b.g - a.g)
