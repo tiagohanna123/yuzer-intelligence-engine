@@ -7,7 +7,7 @@
   <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="License: MIT"></a>
   <a href="./tsconfig.json"><img src="https://img.shields.io/badge/typescript-strict-blue" alt="TypeScript"></a>
   <img src="https://img.shields.io/badge/bundle-2.7%20KB-brightgreen" alt="Bundle Size">
-  <img src="https://img.shields.io/badge/tests-90%20%7C%20100%25-brightgreen" alt="Tests">
+  <img src="https://img.shields.io/badge/tests-91%20%7C%20100%25-brightgreen" alt="Tests">
   <a href="./CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen" alt="PRs Welcome"></a>
 </p>
 
@@ -173,7 +173,7 @@ import type { Mensal, Evento, ProdutoMix, Categoria, AnalysisResult } from 'yuze
 git clone https://github.com/tiagohanna/yuzer-intelligence-engine.git
 cd yuzer-intelligence-engine
 npm install
-npm test              # 90 testes
+|npm test              # 91 testes
 npm run test:coverage # cobertura (100% statements)
 npm run lint          # ESLint strict
 npm run typecheck     # TypeScript strict
@@ -219,8 +219,8 @@ src/
 
 | Métrica | Valor |
 |---------|-------|
-| Testes | **90** |
-| Cobertura (branches / statements) | **95,71% / 100%** |
+| Testes | **91** |
+| Cobertura (branches / statements) | **100% / 100%** |
 | Dependências runtime | **0** |
 | Bundle size (gzip) | **2,7 KB** |
 | TypeScript | **strict mode** |

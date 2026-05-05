@@ -1,12 +1,40 @@
 # Roadmap — Yuzer Intelligence Engine
 
-**Current version:** v0.1.0
-**Next release:** v0.2.0
+**Current version:** v0.2.0
+**Next release:** v0.3.0
 **Target:** v1.0.0 (production-ready)
 
 ---
 
-## v0.1.0 — Engine Foundation ✅ *(Current)*
+## v0.2.0 — Observability & Robustness ✅ *(Current)*
+
+### Realizado
+
+- **91 testes unitários** — 12 arquivos, todas as métricas cobertas
+- **Cobertura 100%** — statements, branches, functions e lines
+- **ESLint flat config** — regras strict + stylistic, 0 warnings
+- **TypeScript strict** — 0 erros de tipo
+- **CI otimizado** — 3 jobs, cobertura integrada ao job de teste
+- **Edge cases** — NaN/Infinity guards, arrays vazios, dados sem produtos
+- **Zero dependências runtime** — mantido
+- **Tree-shakeable** — cada métrica importável separadamente
+- **Dual ESM/CJS** — mantido
+
+### Qualidade
+
+| Métrica | Valor |
+|---------|-------|
+| Testes | 91 |
+| Cobertura (statements) | 100% |
+| Cobertura (branches) | 100% |
+| Cobertura (functions) | 100% |
+| Cobertura (lines) | 100% |
+| Dependências runtime | 0 |
+| Bundle size (gzip, ESM) | 2,7 KB |
+| ESLint | 0 warnings |
+| TypeScript strict | 0 erros |
+
+## v0.1.0 — Engine Foundation ✅
 
 ### Features
 - **CAGR** — Compound Annual Growth Rate calculation
@@ -25,8 +53,8 @@
 - **Zero runtime dependencies** — Pure TypeScript, tree-shakeable
 
 ### Quality
-- 79 tests, 12 test files
-- 96% statement coverage
+- 23 tests, 5 test files (core engine)
+- 96% statement coverage (initial baseline)
 - TypeScript strict mode — 0 errors
 - CI: GitHub Actions (test + typecheck + build)
 
@@ -128,7 +156,7 @@ v0.1.0 ──→ v0.2.0 ──→ v0.3.0 ──→ v0.4.0 ──→ v1.0.0
 | Version | Theme | Estimated Effort | Dependencies |
 |---------|-------|------------------|--------------|
 | v0.1.0 | Engine Foundation | ✅ Complete | — |
-| v0.2.0 | Observability & Robustness | 1 week | v0.1.0 |
+| v0.2.0 | Observability & Robustness | ✅ Complete | v0.1.0 |
 | v0.3.0 | Extensibility | 2 weeks | v0.2.0 |
 | v0.4.0 | Visualization & Distribution | 2 weeks | v0.3.0 |
 | v1.0.0 | Production Release | 3–4 weeks | All prior |

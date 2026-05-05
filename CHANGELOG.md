@@ -9,6 +9,30 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Adicionado
 
+- Cobertura de branches: 100% (todas as condicionais testadas)
+- 91 testes unitários (12 arquivos de teste)
+- ESLint flat config com regras strict + stylistic
+- TypeScript strict — 0 erros de tipo
+- CI workflow otimizado: 3 jobs, cobertura integrada
+- Seção "Features" no README com tabela das 11 métricas
+- .gitignore expandido (IDE, backup, temp files)
+
+### Corrigido
+
+- `repository.url` no package.json: `tiagohanna123` → `tiagohanna`
+- Badges do README apontando para o repositório correto
+- Contagem de testes e bundle size na tabela de qualidade
+
+### Melhorado
+
+- 100% de cobertura: statements, branches, functions e lines
+- Pipeline de CI: sem jobs redundantes, build valida antes do typecheck
+- Documentação: README reestruturado com seção clara de features
+
+## [0.1.0] — 2026-05-05
+
+### Adicionado
+
 - **5 novos cenários de borda** nos testes — branch coverage subiu de 88.57% → 95.71%
   - CAGR: receita zero nos primeiros 6 meses
   - Pareto: produtoMix com total zero
