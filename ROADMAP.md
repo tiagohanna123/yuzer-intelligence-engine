@@ -1,12 +1,36 @@
 # Roadmap — Yuzer Intelligence Engine
 
-**Current version:** v0.2.0
+**Current version:** v0.2.1
 **Next release:** v0.3.0
 **Target:** v1.0.0 (production-ready)
 
 ---
 
-## v0.2.0 — Observability & Robustness ✅ *(Current)*
+## v0.2.1 — Formalização & Produto ✅ *(Current)*
+
+### Realizado
+
+- **package.json publicados** — npm publish pipeline preparado
+- **Docker multi-stage** — `node:22-alpine`, <10MB final
+- **Repositório público** — GitHub público com 13 topics
+- **CI verde** — 6+ runs, todas passando (test, build, coverage)
+- **CHANGELOG v0.2.1** — documentação completa do release
+
+### Qualidade
+
+| Métrica | Valor |
+|---------|-------|
+| Testes | 91 |
+| Cobertura (statements) | 100% |
+| Cobertura (branches) | 100% |
+| Cobertura (functions) | 100% |
+| Cobertura (lines) | 100% |
+| Dependências runtime | 0 |
+| Bundle size (gzip, ESM) | 2,6 KB |
+| ESLint | 0 warnings |
+| TypeScript strict | 0 erros |
+
+## v0.2.0 — Observability & Robustness ✅
 
 ### Realizado
 
@@ -137,7 +161,8 @@ v0.1.0 ──→ v0.2.0 ──→ v0.3.0 ──→ v0.4.0 ──→ v1.0.0
 |---------|-------|------------------|--------------|
 | v0.1.0 | Engine Foundation | ✅ Complete | — |
 | v0.2.0 | Observability & Robustness | ✅ Complete | v0.1.0 |
-| v0.3.0 | Extensibility | 2 weeks | v0.2.0 |
+| v0.2.1 | Formalização & Produto | ✅ Complete | v0.2.0 |
+| v0.3.0 | Extensibility | 2 weeks | v0.2.1 |
 | v0.4.0 | Visualization & Distribution | 2 weeks | v0.3.0 |
 | v1.0.0 | Production Release | 3–4 weeks | All prior |
 

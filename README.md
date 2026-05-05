@@ -6,7 +6,7 @@
   <a href="https://www.npmjs.com/package/yuzer-intelligence-engine"><img src="https://img.shields.io/npm/v/yuzer-intelligence-engine" alt="npm"></a>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="License: MIT"></a>
   <a href="./tsconfig.json"><img src="https://img.shields.io/badge/typescript-strict-blue" alt="TypeScript"></a>
-  <img src="https://img.shields.io/badge/bundle-2.7%20KB-brightgreen" alt="Bundle Size">
+  <img src="https://img.shields.io/badge/bundle-2.6%20KB-brightgreen" alt="Bundle Size">
   <img src="https://img.shields.io/badge/tests-91%20%7C%20100%25-brightgreen" alt="Tests">
   <a href="./CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen" alt="PRs Welcome"></a>
 </p>
@@ -222,7 +222,7 @@ src/
 | Testes | **91** |
 | Cobertura (branches / statements / functions / lines) | **100% / 100% / 100% / 100%** |
 | Dependências runtime | **0** |
-| Bundle size (gzip) | **2,7 KB** |
+| Bundle size (gzip) | **2,6 KB** |
 | TypeScript | **strict mode** |
 | ESLint | **0 erros** |
 | Tree-shakeable | ✅ |
@@ -243,7 +243,7 @@ Princípios de qualidade:
 
 ## Projetos Relacionados
 
-- **[Hermes Agent Soul](https://github.com/tiagohanna123/hermes-agent-soul)** — Agente de IA modular que consome o Yuzer para análise de dados de bar e geração de relatórios inteligentes
+- **[Hermes Agent Soul](https://github.com/tiagohanna123/hermes-agent-soul)** — Agente de IA modular que consome o Yuzer Intelligence Engine para análise de dados de bar e geração de relatórios inteligentes
 - **[Sarau Secreto](https://github.com/tiagohanna123/sarau-secreto)** — Sistema de gestão completo para festival literário; o Yuzer foi extraído deste projeto como motor de análise standalone
 
 ---
