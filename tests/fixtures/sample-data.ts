@@ -146,3 +146,50 @@ export const twoMensais: Mensal[] = [
   { mes: '2025-01', label: 'Jan/2025', eventos: 1, orders: 100, revenue: 5000, ticketMedio: 50 },
   { mes: '2025-02', label: 'Fev/2025', eventos: 1, orders: 120, revenue: 6000, ticketMedio: 50 },
 ]
+
+/* ── Dados de borda para CAGR: receita zero nos primeiros 6 meses ── */
+
+export const zeroRevenueMensais: Mensal[] = Array.from({ length: 12 }, (_, i) => ({
+  mes: `2024-${String(i + 1).padStart(2, '0')}`,
+  label: `${['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'][i]}/2024`,
+  eventos: 0,
+  orders: 0,
+  revenue: i < 6 ? 0 : 10000, // primeiros 6 com receita zero
+  ticketMedio: 0,
+}))
+
+/* ── Dados de borda para Pareto: mix com total zero ── */
+
+export const zeroTotalMix: ProdutoMix[] = [
+  { name: 'PRODUTO_A', qty: 0, total: 0, pct: 0 },
+  { name: 'PRODUTO_B', qty: 0, total: 0, pct: 0 },
+  { name: 'PRODUTO_C', qty: 0, total: 0, pct: 0 },
+]
+
+/* ── Dados de borda para ProductGrowth: produto só na 2ª metade ── */
+
+export const singleProductEvent: Evento[] = [
+  {
+    start: '2024-01-01', end: '2024-01-01', days: 1,
+    orders: 10, revenue: 1000, ticketMedio: 100, itensVendidos: 5,
+    produtos: [],
+    metodosPagamento: [{ method: 'Crédito', total: 1000, pct: 100 }],
+  },
+  {
+    start: '2024-02-01', end: '2024-02-01', days: 1,
+    orders: 10, revenue: 1000, ticketMedio: 100, itensVendidos: 5,
+    produtos: [
+      { name: 'NOVO_PRODUTO', qty: 10, total: 1000, pct: 100 },
+      { name: 'PRODUTO_SEM_VENDA', qty: 0, total: 0, pct: 0 },
+    ],
+    metodosPagamento: [{ method: 'Crédito', total: 1000, pct: 100 }],
+  },
+]
+
+/* ── Dados de borda para Quarters: label fora do padrao monthNames ── */
+
+export const badLabelMensal: Mensal[] = [
+  { mes: '2024-01', label: 'Janeiro/2024', eventos: 1, orders: 50, revenue: 5000, ticketMedio: 100 },
+  { mes: '2024-02', label: 'Fev/2024',     eventos: 1, orders: 60, revenue: 6000, ticketMedio: 100 },
+  { mes: '2024-03', label: 'INVALIDO/2024', eventos: 1, orders: 70, revenue: 7000, ticketMedio: 100 },
+]

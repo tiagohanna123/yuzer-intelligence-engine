@@ -7,12 +7,12 @@ export function calcSeasonality(
   mensais: Mensal[],
   monthNames: string[],
 ): SeasonalEntry[] {
-  const byMonth: Record<number, { r: number; c: number }> = {}
+  const byMonth: Partial<Record<number, { r: number; c: number }>> = {}
 
   for (const m of mensais) {
     const idx = monthNames.indexOf(m.label.split('/')[0]) + 1
     if (idx < 1 || idx > 12) continue
-    if (!byMonth[idx]) byMonth[idx] = { r: 0, c: 0 }
+    byMonth[idx] ??= { r: 0, c: 0 }
     byMonth[idx].r += m.revenue
     byMonth[idx].c++
   }

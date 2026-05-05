@@ -1,16 +1,12 @@
 # Yuzer Intelligence Engine
 
-<p align="center">
-  <a href="https://www.npmjs.com/package/yuzer-intelligence-engine"><img src="https://img.shields.io/npm/v/yuzer-intelligence-engine" alt="npm version"></a>
-  <a href="https://github.com/tiagohanna/yuzer-intelligence-engine/actions/workflows/ci.yml"><img src="https://github.com/tiagohanna/yuzer-intelligence-engine/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
-  <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License"></a>
-  <a href="#"><img src="https://img.shields.io/badge/TypeScript-strict-3178C6" alt="TypeScript Strict"></a>
-  <a href="#"><img src="https://img.shields.io/badge/tests-79%20passing-brightgreen" alt="Tests 79 passing"></a>
-  <a href="#"><img src="https://img.shields.io/badge/coverage-%3E95%25-success" alt="Coverage >95%"></a>
-  <a href="#"><img src="https://img.shields.io/badge/dependencies-0-orange" alt="Zero dependencies"></a>
-</p>
+![CI](https://github.com/tiagohanna/yuzer-intelligence-engine/actions/workflows/ci.yml/badge.svg)
+![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)
+![License](https://img.shields.io/badge/license-MIT-blue)
+![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen)
+![TypeScript](https://img.shields.io/badge/typescript-strict-3178c6)
 
-Motor de análise para dados de bar e eventos — **CAGR**, **correlação de Pearson**, **Pareto**, **sazonalidade**, **previsão por regressão linear**, **produtos em alta**. Zero dependências. 100% TypeScript.
+Motor de análise para dados de bar e eventos — **CAGR**, **correlação de Pearson**, **Pareto**, **sazonalidade**, **previsão por regressão linear**, **produtos em alta**. Zero dependências runtime. 100% TypeScript strict.
 
 Extraído do sistema Sarau Secreto para uso standalone em qualquer dashboard, API ou relatório.
 
@@ -84,19 +80,19 @@ const r = calcCorrelation(mensais)
 const { topN } = calcPareto(produtoMix)
 ```
 
-| Função | Import | Descrição |
-|--------|--------|-----------|
-| `calcMom` | `metrics/mom` | Mês a mês + MA3 |
-| `calcCAGR` | `metrics/cagr` | CAGR |
-| `calcCorrelation` | `metrics/correlation` | Pearson R |
-| `calcPareto` | `metrics/pareto` | Análise de Pareto |
-| `calcQuarters` | `metrics/quarters` | Trimestres |
-| `calcForecast` | `metrics/forecast` | Regressão linear |
-| `calcSeasonality` | `metrics/seasonality` | Sazonalidade |
-| `calcProductGrowth` | `metrics/product-growth` | Produtos em alta |
-| `calcTicketGrowth` | `metrics/ticket-growth` | Evolução do ticket |
-| `analyzeCategories` | `metrics/categories` | Categorias |
-| `analyzeEvents` | `metrics/events` | Eventos normalizados |
+| Função | Descrição |
+|--------|-----------|
+| `calcMom` | Mês a mês + MA3 |
+| `calcCAGR` | CAGR |
+| `calcCorrelation` | Pearson R |
+| `calcPareto` | Análise de Pareto |
+| `calcQuarters` | Trimestres |
+| `calcForecast` | Regressão linear |
+| `calcSeasonality` | Sazonalidade |
+| `calcProductGrowth` | Produtos em alta |
+| `calcTicketGrowth` | Evolução do ticket |
+| `analyzeCategories` | Categorias |
+| `analyzeEvents` | Eventos normalizados |
 
 ---
 
@@ -136,12 +132,14 @@ import type { Mensal, Evento, ProdutoMix, Categoria, AnalysisResult } from 'yuze
 ## Desenvolvimento
 
 ```bash
-git clone <repo>
+git clone https://github.com/tiagohanna/yuzer-intelligence-engine.git
 cd yuzer-intelligence-engine
 npm install
-npm test              # 79 testes
-npm run test:coverage # cobertura
-npm run build         # tsc → dist/
+npm test              # 84 testes
+npm run test:coverage # cobertura (100% statements)
+npm run lint          # ESLint strict
+npm run typecheck     # TypeScript strict
+npm run build         # tsup → dist/
 ```
 
 ---
@@ -169,17 +167,22 @@ src/
     └── events.ts     — Eventos normalizados
 ```
 
-Princípios:
-- **Zero dependências runtime**
-- **Funções puras** — sem side effects, sem mutação
-- **100% tipado** — sem `any`
-- **Tree-shakeable** — importe só o que precisa
-- **ESM** — nativo ES2022
+### Princípios
 
-## Licença MIT.
+- **Zero dependências runtime** — o motor não depende de nada além do stdlib do Node.js
+- **Funções puras** — sem side effects, sem mutação de entrada
+- **100% tipado** — TypeScript strict, sem `any`
+- **Tree-shakeable** — importe só a métrica que precisa
+- **Dual ESM/CJS** — compatível com `import` e `require()`
 
 ---
 
-📖 **[ARCHITECTURE.md](./ARCHITECTURE.md)** — arquitetura, fluxo de dados, princípios de design  
-🎓 **[LEARN.md](./LEARN.md)** — guia de aprendizado para novos desenvolvedores  
-📋 **[CHANGELOG.md](./CHANGELOG.md)** — histórico de versões
+## Licença
+
+MIT © [Tiago Hanna](https://github.com/tiagohanna)
+
+---
+
+## Contribuindo
+
+Veja [CONTRIBUTING.md](CONTRIBUTING.md) para guia de contribuição e [SECURITY.md](SECURITY.md) para política de segurança.

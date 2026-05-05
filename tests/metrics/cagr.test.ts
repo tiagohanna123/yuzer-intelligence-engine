@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { calcCAGR } from '../../src/metrics/cagr'
-import { sampleMensais, emptyMensais, singleMensal, twoMensais } from '../fixtures/sample-data'
+import { sampleMensais, emptyMensais, singleMensal, twoMensais, zeroRevenueMensais } from '../fixtures/sample-data'
+import type { Mensal } from '../../src/types'
 
 describe('calcCAGR — Compound Annual Growth Rate', () => {
   it('deve retornar 0 para dados vazios', () => {
@@ -29,5 +30,22 @@ describe('calcCAGR — Compound Annual Growth Rate', () => {
     const result = calcCAGR(sampleMensais)
     expect(typeof result).toBe('number')
     expect(isFinite(result)).toBe(true)
+  })
+
+  it('deve retornar 0 para CAGR quando receita inicial é zero (12+ meses)', () => {
+    const noRevenue: Mensal[] = Array.from({ length: 12 }, (_, i) => ({
+      mes: `2024-${String(i + 1).padStart(2, '0')}`,
+      label: `Mes/${2024 + Math.floor(i / 12)}`,
+      eventos: 0,
+      orders: 0,
+      revenue: 0,
+      ticketMedio: 0,
+    }))
+    expect(calcCAGR(noRevenue)).toBe(0)
+  })
+
+  it('deve retornar 0 quando os primeiros 6 meses têm receita zero (fixture)', () => {
+    // f6 = 0, l6 = 60000 → branch false de f6 > 0
+    expect(calcCAGR(zeroRevenueMensais)).toBe(0)
   })
 })

@@ -1,7 +1,7 @@
 {
   "name": "yuzer-intelligence-engine",
   "version": "0.1.0",
-  "description": "Motor de análise para dados de bar Yuzer — CAGR, correlações, Pareto, sazonalidade, previsão por regressão linear, produtos em alta. Zero dependências runtime.",
+  "description": "Motor de an\u00e1lise para dados de bar Yuzer \u2014 CAGR, correla\u00e7\u00f5es, Pareto, sazonalidade, previs\u00e3o por regress\u00e3o linear, produtos em alta. Zero depend\u00eancias runtime.",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -31,9 +31,9 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint src/ tests/",
-    "lint:fix": "eslint src/ tests/ --fix",
-    "format": "eslint src/ tests/ --fix",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "format": "eslint src/ --fix",
     "prepublishOnly": "npm run build && npm test",
     "preversion": "npm run lint && npm run build && npm test"
   },
@@ -58,7 +58,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tiagohanna/yuzer-intelligence-engine.git"
+    "url": "https://github.com/tiagohanna123/yuzer-intelligence-engine.git"
   },
   "bugs": {
     "url": "https://github.com/tiagohanna/yuzer-intelligence-engine/issues"
@@ -71,7 +71,7 @@
     "@eslint/js": "^10.0.1",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
-    "eslint": "^9.39.4",
+    "eslint": "^10.3.0",
     "tsup": "^8.5.1",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.59.2",

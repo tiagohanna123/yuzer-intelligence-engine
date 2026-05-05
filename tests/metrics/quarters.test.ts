@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { calcQuarters } from '../../src/metrics/quarters'
-import type { QuarterEntry } from '../../src/types'
+import type { QuarterEntry, Mensal } from '../../src/types'
 import { MESES } from '../../src/constants'
 import { sampleMensais, emptyMensais, twoMensais } from '../fixtures/sample-data'
 
@@ -28,7 +28,6 @@ describe('calcQuarters — Agregação por Trimestre', () => {
     expect(q4_23!.revenue).toBeCloseTo(29952 + 10697, 0)
     expect(q4_23!.count).toBe(2)
 
-    // Verificar estrutura dos entries
     for (const q of result) {
       expect(q).toHaveProperty('label')
       expect(q).toHaveProperty('revenue')
@@ -38,10 +37,19 @@ describe('calcQuarters — Agregação por Trimestre', () => {
   })
 
   it('deve pular meses com label não reconhecido', () => {
-    const invalid = [
+    const invalid: Mensal[] = [
       { mes: '2024-01', label: 'Xyz/2024', eventos: 0, orders: 10, revenue: 1000, ticketMedio: 100 },
     ]
     const result = calcQuarters(invalid, MESES)
     expect(result).toHaveLength(0)
+  })
+
+  it('deve usar fallback 2000 quando label não tem ano válido', () => {
+    const semAno: Mensal[] = [
+      { mes: '2025-01', label: 'Jan/', eventos: 1, orders: 100, revenue: 5000, ticketMedio: 50 },
+    ]
+    const result = calcQuarters(semAno, MESES)
+    expect(result).toHaveLength(1)
+    expect(result[0].label).toBe('Q1 2000')
   })
 })

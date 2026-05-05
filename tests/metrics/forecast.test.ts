@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { calcForecast } from '../../src/metrics/forecast'
-import type { ForecastEntry } from '../../src/types'
+import type { Mensal } from '../../src/types'
 import { sampleMensais, emptyMensais, singleMensal, twoMensais } from '../fixtures/sample-data'
 
 describe('calcForecast — Regressão Linear', () => {
@@ -49,5 +49,19 @@ describe('calcForecast — Regressão Linear', () => {
   it('deve funcionar com lookback customizado', () => {
     const result = calcForecast(sampleMensais, 2, 6)
     expect(result).toHaveLength(2)
+  })
+
+  it('deve retornar slope 0 quando todos os valores são idênticos (sd = 0)', () => {
+    const constantes: Mensal[] = [
+      { mes: '2025-01', label: 'Jan/2025', eventos: 1, orders: 100, revenue: 5000, ticketMedio: 50 },
+      { mes: '2025-02', label: 'Fev/2025', eventos: 1, orders: 100, revenue: 5000, ticketMedio: 50 },
+      { mes: '2025-03', label: 'Mar/2025', eventos: 1, orders: 100, revenue: 5000, ticketMedio: 50 },
+    ]
+    const result = calcForecast(constantes)
+    expect(result).toHaveLength(3)
+    // Todas as previsões = 5000 (slope 0, intercept = revenue)
+    for (const entry of result) {
+      expect(entry.previsto).toBeCloseTo(5000, 0)
+    }
   })
 })

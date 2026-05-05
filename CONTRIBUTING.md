@@ -1,74 +1,72 @@
-# Contributing
+# Contribuindo
 
-## Code Standards
+Obrigado por considerar contribuir com o **Yuzer Intelligence Engine**!
 
-- **TypeScript strict** — `strict: true` in tsconfig. No `any`, no `// @ts-ignore`.
-- **Pure functions** — No side effects, no mutation of inputs. Every function returns a new value.
-- **100% typed** — All public APIs must have explicit return types. Parameters must be typed.
-- **Tree-shakeable** — Each metric is a standalone module. No barrel imports in production path.
-- **Zero runtime deps** — No third-party dependencies at runtime. Dev deps only.
+## Código de Conduta
 
-## Development Setup
+Este projeto adota um código de conduta baseado no [Contributor Covenant](https://www.contributor-covenant.org/). Ao participar, espera-se que todos os contribuidores mantenham um ambiente respeitoso e aberto.
+
+## Como Contribuir
+
+### Reportando Bugs
+
+1. Verifique se o bug já não foi reportado nas [issues](https://github.com/tiagohanna/yuzer-intelligence-engine/issues)
+2. Use o template de [bug report](https://github.com/tiagohanna/yuzer-intelligence-engine/issues/new?template=bug_report.md)
+3. Inclua:
+   - Versão do Node.js e sistema operacional
+   - Código mínimo para reproduzir
+   - Comportamento esperado vs real
+
+### Sugerindo Funcionalidades
+
+1. Verifique se a funcionalidade já não foi sugerida
+2. Use o template de [feature request](https://github.com/tiagohanna/yuzer-intelligence-engine/issues/new?template=feature_request.md)
+3. Explique o caso de uso e o valor da funcionalidade
+
+### Pull Requests
+
+1. Fork o repositório
+2. Crie uma branch descritiva: `feat/nova-metrica`, `fix/cagr-edge-case`
+3. Siga as convenções de commit: [Conventional Commits](https://www.conventionalcommits.org/)
+4. Escreva testes para nova funcionalidade
+5. Garanta que todos os testes passem: `npm test`
+6. Garanta a cobertura: `npm run test:coverage`
+7. Verifique o lint: `npm run lint`
+8. Verifique tipos: `npm run typecheck`
+9. Abra o PR contra a branch `main`
+
+## Desenvolvimento Local
 
 ```bash
-git clone <repo>
-cd yuzer-intelligence-engine
 npm install
+npm run dev        # Build em watch mode
+npm test           # Rodar testes
+npm run test:coverage  # Verificar cobertura
+npm run lint       # Verificar lint
+npm run typecheck  # Verificar tipos
+npm run build      # Build de produção
 ```
 
-## Before Committing
-
-Run the full quality gate:
-
-```bash
-npm run typecheck     # TypeScript strict — 0 errors
-npm test              # All tests pass
-npm run test:coverage # Coverage meets thresholds (95% stmts, 90% branches)
-npm run build         # ESM + CJS + DTS builds clean
-```
-
-## Test Conventions
-
-- One test file per module: `tests/metrics/<metric>.test.ts`
-- Use fixtures from `tests/fixtures/sample-data.ts` for realistic data
-- Cover edge cases: empty arrays, single values, negative growth, NaN guards
-- Name tests with `describe` / `it` — clear, declarative sentences
-
-## Pull Request Process
-
-1. Ensure all quality gates pass locally
-2. Add tests for new metrics or edge cases
-3. Update CHANGELOG.md under `[Unreleased]`
-4. Update README.md if API surface changes
-5. PR is merged after CI passes and at least one review
-
-## Architecture
+## Estrutura do Projeto
 
 ```
 src/
-├── index.ts          — Public entry point (re-exports)
-├── types.ts          — Shared interfaces
-├── constants.ts      — Config values, thresholds, labels
-├── formatters.ts     — Display formatting (BRL, %, number)
-├── engine.ts         — Orchestrator (analyze())
-└── metrics/           — Individual metric modules
-    ├── mom.ts
-    ├── cagr.ts
-    ├── correlation.ts
-    ├── pareto.ts
-    ├── quarters.ts
-    ├── forecast.ts
-    ├── seasonality.ts
-    ├── product-growth.ts
-    ├── ticket-growth.ts
-    ├── categories.ts
-    └── events.ts
+├── index.ts           — Ponto de entrada público
+├── types.ts           — Interfaces de entrada/saída
+├── constants.ts       — Cores, meses, thresholds
+├── formatters.ts      — Formatadores BRL/%
+├── engine.ts          — Orquestrador
+└── metrics/           — Módulos de métricas individuais
+
+tests/
+├── fixtures/          — Dados de teste compartilhados
+└── metrics/           — Testes por métrica
 ```
 
-## Versioning
+## Princípios
 
-This project follows [Semantic Versioning](https://semver.org/):
-
-- **MAJOR** — Breaking API changes
-- **MINOR** — New metrics, features, or optional deps
-- **PATCH** — Bug fixes, edge case hardening, performance
+- **Zero dependências runtime** — o motor não deve depender de nada além do stdlib
+- **Funções puras** — sem side effects, sem mutação de entrada
+- **100% tipado** — sem `any`, sem type assertions desnecessárias
+- **Tree-shakeable** — cada métrica importável individualmente
+- **Cobertura mínima**: 95% statements, 90% branches, 95% functions
