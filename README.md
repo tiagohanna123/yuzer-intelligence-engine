@@ -1,13 +1,13 @@
 # Yuzer Intelligence Engine
 
 <p align="center">
-  <a href="https://github.com/tiagohanna123/yuzer-intelligence-engine/actions/workflows/ci.yml"><img src="https://github.com/tiagohanna123/yuzer-intelligence-engine/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
-  <a href="https://codecov.io/gh/tiagohanna123/yuzer-intelligence-engine"><img src="https://codecov.io/gh/tiagohanna123/yuzer-intelligence-engine/branch/main/graph/badge.svg" alt="codecov"></a>
+  <a href="https://github.com/tiagohanna/yuzer-intelligence-engine/actions/workflows/ci.yml"><img src="https://github.com/tiagohanna/yuzer-intelligence-engine/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://codecov.io/gh/tiagohanna/yuzer-intelligence-engine"><img src="https://codecov.io/gh/tiagohanna/yuzer-intelligence-engine/branch/main/graph/badge.svg" alt="codecov"></a>
   <a href="https://www.npmjs.com/package/yuzer-intelligence-engine"><img src="https://img.shields.io/npm/v/yuzer-intelligence-engine" alt="npm"></a>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="License: MIT"></a>
   <a href="./tsconfig.json"><img src="https://img.shields.io/badge/typescript-strict-blue" alt="TypeScript"></a>
-  <img src="https://img.shields.io/badge/bundle-%3C10KB-brightgreen" alt="Bundle Size">
-  <img src="https://img.shields.io/badge/tests-91%20%7C%20100%25-brightgreen" alt="Tests">
+  <img src="https://img.shields.io/badge/bundle-2.7%20KB-brightgreen" alt="Bundle Size">
+  <img src="https://img.shields.io/badge/tests-90%20%7C%20100%25-brightgreen" alt="Tests">
   <a href="./CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen" alt="PRs Welcome"></a>
 </p>
 

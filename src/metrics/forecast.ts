@@ -23,7 +23,7 @@ export function calcForecast(
     sd += (i - xm) ** 2
   }
 
-  const slope = sn / sd
+  const slope = sd > 0 ? sn / sd : 0
   const intercept = ym - slope * xm
 
   return Array.from({ length: periods }, (_, i) => ({
