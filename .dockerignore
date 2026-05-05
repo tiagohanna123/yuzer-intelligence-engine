@@ -24,6 +24,9 @@ Thumbs.db
 *.swo
 *~
 
+# === Tests (not needed for build) ===
+tests/
+
 # === Documentation (keep LICENSE/README for npm) ===
 AGENTS.md
 ARCHITECTURE.md

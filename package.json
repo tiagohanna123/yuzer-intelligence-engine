@@ -53,7 +53,11 @@
     "correlation",
     "forecast",
     "seasonality",
-    "business-intelligence"
+    "business-intelligence",
+    "data-analysis",
+    "finance",
+    "metrics",
+    "typescript"
   ],
   "author": "Tiago Hanna",
   "license": "MIT",
